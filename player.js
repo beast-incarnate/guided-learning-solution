@@ -1,6 +1,6 @@
 $(document).ready(function(){
     const stTipCssUrl = "https://guidedlearning.oracle.com/player/latest/static/css/stTip.css";    
-    const guideUrl = "https://guidedlearning.oracle.com/player/latest/api/scenario/get/v_IlPvRLRWObwLnV5sTOaw/5szm2kaj/?callback=func&refresh=true&env=dev&type=startPanel&vars%5Btype%5D=startPanel&sid=none&_=1582203987867";
+    const guideUrl = "https://guidedlearning.oracle.com/player/latest/api/scenario/get/v_IlPvRLRWObwLnV5sTOaw/5szm2kaj/?callback=function&refresh=true&env=dev&type=startPanel&vars%5Btype%5D=startPanel&sid=none&_=1582203987867";
     
     loadStTipCss(stTipCssUrl);
     loadGuideAndUpdateDom(guideUrl);
@@ -29,7 +29,7 @@ function loadGuideAndUpdateDom(url) {
         type: "GET",
         dataType: 'text',
         success : function(data) {
-            parseResponseAndUpdateDom(data);                   
+            parseResponseAndUpdateDom(data, url);                   
         },
         error : function(err) {
             console.log(err);
@@ -37,9 +37,9 @@ function loadGuideAndUpdateDom(url) {
     });
 }
 
-function parseResponseAndUpdateDom(guideJSON) {
+function parseResponseAndUpdateDom(guideJSON, guideURL) {
     try {
-        const guide = JSON.parse(guideJSON.substring(5, guideJSON.length-1));
+        const guide = JSON.parse(getGuideString(guideJSON, guideURL));
         const {data} = guide;
         if (data) {
             const {structure, tiplates, css} = data;
@@ -50,6 +50,24 @@ function parseResponseAndUpdateDom(guideJSON) {
         console.log(exception);
     }
 
+}
+
+function getGuideString(guideJSON, guideURL) {
+    let queryParams = guideURL.split('&');
+    let callback = '';    
+    queryParams[0] = queryParams[0].split('?')[1];
+
+    for(let i=0;i<queryParams.length;i++) {
+        const query = queryParams[i].split('=');
+        const key = query[0];
+        const value = query[1];
+        if (key == 'callback') {
+            callback = value;
+            break;
+        }
+    }
+
+    return guideJSON.substring(callback.length+1, guideJSON.length-1);
 }
 
 function updateDOM(document, structure, tiplates, css) {
