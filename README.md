@@ -2,7 +2,7 @@
 
 The project consists of a single script "player.js".
 On DOM load of www.google.com the script loads the stTipCss and guideJson.
-On sucessfull network response the script parses the response and creates tooltip for each step.
+On successfull network response the script parses the response and creates tooltip for each step.
 Finally it initializes the next and cross actions present on the tooltip.
 
 
