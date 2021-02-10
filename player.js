@@ -44,6 +44,7 @@ function parseResponseAndUpdateDom(guideJSON) {
         if (data) {
             const {structure, tiplates, css} = data;
             updateDOM($(document), structure, tiplates, css);
+            initializeListeners($(document));
         }
     } catch(exception) {
         console.log(exception);
@@ -103,4 +104,20 @@ function getNextClass(followers) {
     }
 
     return nextClass;
+}
+
+function initializeListeners() {
+    $(document).find('.next-btn').click(function() {
+        const nextClass = $(this).attr('data-next-class');
+        $(this).closest('.sttip').hide();
+        if (nextClass) {
+            $(document).find(nextClass).show();
+        }
+    });
+
+    $(document).find('.view-less-container button').click(function(e) {
+        e.preventDefault();
+        $(this).closest('.sttip').hide();
+    });
+
 }
