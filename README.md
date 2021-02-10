@@ -20,3 +20,5 @@ We need to download two chrome extensions to run this script
 Once these extensions are downloaded, we just need to paste the code of player.js in Run Javascript and click on Save & Run.
 The tooltip will appear on the page.
 The same will be true on page refresh.
+
+![runjs](https://user-images.githubusercontent.com/20390397/107505002-15e3a500-6bc2-11eb-98d4-62f9d3b8f6ed.png)
