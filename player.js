@@ -29,10 +29,21 @@ function loadGuideAndUpdateDom(url) {
         type: "GET",
         dataType: 'text',
         success : function(data) {
-            console.log(data);            
+            parseResponseAndUpdateDom(data);                   
         },
         error : function(err) {
             console.log(err);
         }
     });
+}
+
+function parseResponseAndUpdateDom(guideJSON) {
+    try {
+        const guide = JSON.parse(guideJSON.substring(5, guideJSON.length-1));
+        const {data} = guide;
+        console.log(data);
+    } catch(exception) {
+        console.log(exception);
+    }
+
 }
