@@ -127,7 +127,7 @@ function getNextClass(followers) {
     return nextClass;
 }
 
-function initializeListeners() {
+function initializeListeners(document) {
     $(document).find('.next-btn').click(function() {
         const nextClass = $(this).attr('data-next-class');
         $(this).closest('.sttip').hide();
