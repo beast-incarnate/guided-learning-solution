@@ -1,0 +1,37 @@
+{
+  "name": "player",
+  "version": "1.0.0",
+  "description": "The project consists of a single script \"player.js\".\r On DOM load of www.google.com the script loads the stTipCss and guideJson.\r On successfull network response the script parses the response and creates tooltip for each step.\r Finally it initializes the next and cross CTA's present on the tooltip.",
+  "main": "player.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {
+    "chai": "^4.3.0",
+    "mocha-jsdom": "^2.0.0"
+  },
+  "devDependencies": {
+    "jquery": "^3.5.1",
+    "jsdom": "16.4.0",
+    "jsdom-global": "3.0.2",
+    "karma": "^6.1.0",
+    "karma-browserify": "^8.0.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^3.1.0",
+    "karma-mocha": "^2.0.1",
+    "mocha": "^8.2.1"
+  },
+  "scripts": {
+    "test": "mocha test/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beast-incarnate/guided-learning-solution.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/beast-incarnate/guided-learning-solution/issues"
+  },
+  "homepage": "https://github.com/beast-incarnate/guided-learning-solution#readme"
+}

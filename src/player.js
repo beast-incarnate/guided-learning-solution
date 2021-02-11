@@ -142,3 +142,8 @@ function initializeListeners() {
     });
 
 }
+
+module.exports = {
+    getNextClass : getNextClass,
+    getGuideString : getGuideString
+}
