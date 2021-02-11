@@ -7,7 +7,7 @@ $(document).ready(function(){
  
  });
 
-
+/* function to load tooltip css */
  function loadStTipCss(url) {
     $.ajax({
         url: url,
@@ -22,7 +22,7 @@ $(document).ready(function(){
     });
 }
 
-
+/* function to load guide json */
 function loadGuideAndUpdateDom(url) {
     $.ajax({
         url: url,
@@ -37,6 +37,7 @@ function loadGuideAndUpdateDom(url) {
     });
 }
 
+/* function to parse guide response */
 function parseResponseAndUpdateDom(guideJSON, guideURL) {
     try {
         const guide = JSON.parse(getGuideString(guideJSON, guideURL));
@@ -52,6 +53,7 @@ function parseResponseAndUpdateDom(guideJSON, guideURL) {
 
 }
 
+/* function to get guide string from response */
 function getGuideString(guideJSON, guideURL) {
     let queryParams = guideURL.split('&');
     let callback = '';    
@@ -70,6 +72,7 @@ function getGuideString(guideJSON, guideURL) {
     return guideJSON.substring(callback.length+1, guideJSON.length-1);
 }
 
+/* function to update dom with tooltip */
 function updateDOM(document, structure, tiplates, css) {
     if (structure) {
         const {steps} = structure;
